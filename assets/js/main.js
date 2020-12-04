@@ -31,8 +31,7 @@ $ (function () {
     }
 
 
-    //  Creiamo un array composto da oggetto-studenti
-
+    //  Creiamo un array di oggetti-studenti
     var arrayStudents = [
         {
             nome: "Raffaele",
@@ -53,39 +52,55 @@ $ (function () {
 
     // Ciclare tutti gli studenti e stampare per ognuno nome e cognome
     for (i = 0; i < arrayStudents.length; i++) {
-        console.log(arrayStudents[i].nome);
-        console.log(arrayStudents[i].cognome);
-        console.log(arrayStudents[i].età);
+        console.log(arrayStudents[i].nome, arrayStudents[i].cognome);
     }
 
-    /*  (Per stampare tutto anche le chiavi dell'oggetto)
+    /*  (Per stampare anche le chiavi dell'oggetto)
     for (i = 0; i < arrayStudents.length; i++){
-        for (var key in arrayStudents[i]) {
-            console.log(key + " " + arrayStudents[i] [key]);
-        }
+    for (var key in arrayStudents[i]) {
+        console.log(key + " " + arrayStudents[i] [key]);
+    }
 
     } */
 
-    // Inserire nell'array nuovi dati tramite prompt (creiamo un altro oggetto)
+    // Metodo due di ciclo con forEach
+    arrayStudents.forEach(function (item) {
+        // console.log(item); // stampa tutti i valori
+        console.log(item.nome, item.cognome);
+    });
 
-    function nuovoStudente () {
-
-        var newStudent = {
-            nome: prompt("Inserisci un nuovo nome studente"),
-            cognome: prompt("Inserisci un nuovo cognome studente"),
-            età: Number(prompt("Inserisci l'età del nuovo studente"))
-        }
-        arrayStudents.push(newStudent);
-
-        return arrayStudents
-
+    // Inserire nell'array nuovi dati tramite prompt (creiamo un altro oggetto e lo pushiamo nell'array)
+    var newStudent = {
+        nome: prompt("Inserisci un nuovo nome studente"),
+        cognome: prompt("Inserisci un nuovo cognome studente"),
+        età: Number(prompt("Inserisci l'età del nuovo studente")),
     }
+    arrayStudents.push(newStudent);
 
     console.log(arrayStudents); // Array con nuovi elementi
+
+    // Per stampare a video l'array studenti 
+    arrayStudents.forEach(function (dato) {
+        var firstName = dato.nome;
+        var lastName = dato.cognome;
+        var age = dato.età;
+
+        var markup = 
+        
+        ' <li> Nome: ${firstName}, Cognome: ${lastName}, Età: ${age}</li> '
+        
+        document.getElementById(lista).insertAdjacentHTML("beforeend", markup);
+    })
+   
     
-    var list = document.getElementById("lista");
+    /*for (var i = 0; i < arrayStudents.length; i++) {
+        for (var j = 0; j < arrayStudents[i].length; j++) {
+            for (var m = 0; m < arrayStudents[i].length; m++) {
+                arrayStudents[i][j][m];
+            }
+        }
+    }
 
-    list.innerHTML = arrayStudents;
-
+    document.getElementById("lista").innerHTML = arrayText; */
 
 })
